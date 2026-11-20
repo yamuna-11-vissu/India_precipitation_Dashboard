@@ -1,11 +1,13 @@
-# India Precipitation Analysis Dashboard
+# India Live Rainfall Monitor
 
-Interactive Streamlit dashboard for the supplied Indian TPCP precipitation dataset.
+A Streamlit dashboard combining:
+1. Historical analysis of the supplied `precipitation-ind-csv-1.csv`.
+2. Manually refreshed, model-based current weather and precipitation for representative city locations across India using the Open-Meteo Forecast API.
 
 ## Files
-- `app.py` — Streamlit dashboard
-- `requirements.txt` — Python packages
-- `precipitation-ind-csv-1.csv` — source dataset
+- `app.py`
+- `requirements.txt`
+- `precipitation-ind-csv-1.csv`
 
 ## Run locally
 ```bash
@@ -13,8 +15,13 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## Deploy
-Push these files to a GitHub repository, then deploy `app.py` from Streamlit Community Cloud.
+## Deploy on Streamlit Community Cloud
+1. Upload `app.py`, `requirements.txt`, and `precipitation-ind-csv-1.csv` to the root of your GitHub repository.
+2. On Streamlit Community Cloud choose **Deploy a public app from GitHub**.
+3. Repository: your GitHub repository URL.
+4. Branch: `main` (or the actual default branch shown by GitHub).
+5. Main file path: `app.py`.
+6. Deploy.
 
-## Data note
-The supplied CSV has monthly observation dates (18 unique dates, January 2010 to June 2011), 32,000 records, and 76 station IDs. The source columns do not state a measurement unit, so the dashboard labels values as dataset values and avoids claiming national-area rainfall totals.
+## Important interpretation
+The live panel queries Open-Meteo for 28 representative city coordinates. It is not a full India gridded rainfall map, radar feed, or official IMD gauge network. Current weather and forecasts are model estimates. The historical CSV has 32,000 rows, 76 station IDs, and 18 monthly dates from January 2010 to June 2011. Its supplied columns do not identify the measurement unit; values are therefore labelled as source values and station sums are not described as national-area rainfall.
